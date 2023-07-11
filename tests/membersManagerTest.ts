@@ -37,6 +37,7 @@ describe ("Members Manager, Deployment and functionality", () =>{
     it("should deploy the contract", async function () {
         expect(Array.isArray(txt)).to.be.true;
         expect(txt).to.include(receipt.events[0].address);
+        
      });
     
 
