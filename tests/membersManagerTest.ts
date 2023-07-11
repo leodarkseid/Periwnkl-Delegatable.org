@@ -85,6 +85,7 @@ describe ("Members Manager, Deployment and functionality", () =>{
 
     it("check amount of members", async () => {
         const checkAmount = await contract.membersAmount();
+        expect(checkAmount).to.equal(3);
     })
     
 
