@@ -7,8 +7,8 @@ import "./membersManager.sol";
 contract MembersManagerFactory {
     address[] public deployedMembersManagers;
 
-    function createMembersManager() public returns(address){
-        MembersManager newMembersManager = new MembersManager();
+    function createMembersManager(string memory _contractName) public returns(address){
+        MembersManager newMembersManager = new MembersManager(_contractName);
         newMembersManager.transferOwnership(msg.sender);
 
         deployedMembersManagers.push(address(newMembersManager));

@@ -6,13 +6,38 @@ import "../delegatable-sol/contracts/Delegatable.sol";
 
 contract MembersManager is Ownable, Delegatable {
 
+    constructor(string memory contractName) Delegatable(contractName, "1") {}
+
     struct Member {
-        uint256 id;
-        bool active;
-    }
+            uint256 id;
+            bool active;
+        }
 
     mapping(address => Member) public members;
     uint256 public memberCount;
+
+
+    function _msgSender()
+        internal
+        view
+        virtual
+        override(DelegatableCore, Context)
+        returns (address sender)
+    {
+        if (msg.sender == address(this)) {
+            bytes memory array = msg.data;
+            uint256 index = msg.data.length;
+            assembly {
+                sender := and(
+                    mload(add(array, index)),
+                    0xffffffffffffffffffffffffffffffffffffffff
+                )
+            }
+        } else {
+            sender = msg.sender;
+        }
+        return sender;
+    }
 
     function addMember(address _address) public onlyOwner{
         memberCount++;
@@ -23,7 +48,7 @@ contract MembersManager is Ownable, Delegatable {
     }
 
     function changeActive(address _address) public onlyOwner {
-        (members[_address].active == true) ? (members[_address].active = false):(members[_address].active = true);
+        members[_address].active = !members[_address].active;
     }
 
     function membersAmount() public view returns (uint256) {
