@@ -1,9 +1,9 @@
 // pragma solidity ^0.8.13;
 // //SPDX-License-Identifier: MIT
 
-// import "../delegatable-sol/contracts/CaveatEnforcer.sol"; // https://github.com/delegatable/delegatable-sol/blob/main/contracts/CaveatEnforcer.sol
+// import "./../../delegatable-sol/contracts/CaveatEnforcer.sol"; // https://github.com/delegatable/delegatable-sol/blob/main/contracts/CaveatEnforcer.sol
 // import "@openzeppelin/contracts/access/Ownable.sol";
-// import "../delegatable-sol/contracts/Delegatable.sol"; // https://github.com/delegatable/delegatable-sol/blob/main/contracts/Delegatable.sol
+// import "./../../delegatable-sol/contracts/Delegatable.sol"; // https://github.com/delegatable/delegatable-sol/blob/main/contracts/Delegatable.sol
 
 // abstract contract RevokableOwnableDelegatable is Ownable, CaveatEnforcer, Delegatable {
 
